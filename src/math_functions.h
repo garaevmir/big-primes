@@ -1,6 +1,16 @@
 #pragma once
-#include "main.h"
 
-main_type fast_degree_module(const main_type num, const main_type deg, const main_type module);
+#include "defines.h"
 
-main_type gcd(main_type a, main_type b);
+namespace project {
+    struct Maths {
+        public:
+            Maths() = default;
+            static LongInt pow_mod(const LongInt& num, LongInt& deg, const LongInt& module);
+            static LongInt gcd(LongInt a, LongInt b);
+            static SmallType find_legendre(LongInt n, LongInt p);
+            static LongInt pow(const LongInt& num, LongInt& deg);
+        private:
+            static SmallType factor_out_2(LongInt& n, LongInt& p);
+    };
+    }

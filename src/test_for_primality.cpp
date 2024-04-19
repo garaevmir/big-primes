@@ -1,34 +1,44 @@
 #include "test_for_primality.h"
 
-bool run_lucas_test_for_primality(const main_type& number) {
-	paired_vector factorization = run_trial_division(number - 1);
-	main_type limit = main_type(log(boost::multiprecision::cpp_dec_float_100(number))) + 1;
-	bool flag = true;
-	limit *= limit;
-	limit = min(limit * limit * limit, number);
-	if (lucas_test_for_primality(number, 2, factorization)) {
-		return true;
-	}
-	for (main_type i = 3; i < limit; i += 2) {
-		if (lucas_test_for_primality(number, i, factorization)) {
-			return true;
-		}
-	}
-	return false;
-}
+namespace project {
+    LongInt LucasPrimalityTest::computing_border(const LongInt& number_to_test) {
+        LongInt border = LongInt(log(LongFloat(number_to_test))) + 1;
+        return border * border * border;
+    }
 
-bool lucas_test_for_primality(const main_type& number, const main_type arg, const paired_vector& factorization) {
-	if (fast_degree_module(arg, number - 1, number) == 1) {
-		bool flag = true;
-		for (std::pair<main_type, main_type> j : factorization) {
-			if (fast_degree_module(arg, (number - 1) / j.first, number) == 1) {
-				flag = false;
-				break;
-			}
-		}
-		if (flag) {
-			return true;
-		}
-	}
-	return false;
+    bool LucasPrimalityTest::is_prime(const LongInt& number_to_test) {
+        TrialDivision fact(number_to_test - 1);
+        std::vector<factorization> factorization = fact.factorize();
+        LongInt border = min(number_to_test, computing_border(number_to_test));
+        LongInt i = 2;
+        if (testing(number_to_test, i, factorization)) {
+            return true;
+        }
+        for (i = 3; i < border; i += 2) {
+            if (testing(number_to_test, i, factorization)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    bool LucasPrimalityTest::run_factors(const LongInt& number_to_test, LongInt& temp, const LongInt& arg,
+                                         const std::vector<factorization>& factors) {
+        for (factorization j : factors) {
+            temp = (number_to_test - 1) / j.divisor;
+            if (Maths::pow_mod(arg, temp, number_to_test) == 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    bool LucasPrimalityTest::testing(const LongInt& number_to_test, const LongInt& arg,
+                                     const std::vector<factorization>& factors) {
+        LongInt temp = number_to_test - 1;
+        if (Maths::pow_mod(arg, temp, number_to_test) == 1) {
+            return run_factors(number_to_test, temp, arg, factors);
+        }
+        return false;
+    }
 }

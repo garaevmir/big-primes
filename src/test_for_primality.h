@@ -1,10 +1,21 @@
 #pragma once
 
-#include "main.h"
-#include "pollard-rho.h"
+#include "defines.h"
 #include "trial_division.h"
-#include "print_functions.h"
+#include "math_functions.h"
 
-bool run_lucas_test_for_primality(const main_type& number);
+namespace project {
 
-bool lucas_test_for_primality(const main_type& number, const main_type arg, const paired_vector& factorization);
+    struct LucasPrimalityTest {
+        public:
+            LucasPrimalityTest() = default;
+            static bool is_prime(const LongInt& number_to_test);
+        private:
+            static LongInt computing_border(const LongInt& number_to_test);
+            static bool run_factors(const LongInt& number_to_test, LongInt& temp, const LongInt& arg,
+                             const std::vector<factorization>& factors);
+            static bool testing(const LongInt& number_to_test, const LongInt& arg,
+                         const std::vector<factorization>& factorization);
+    };
+
+}

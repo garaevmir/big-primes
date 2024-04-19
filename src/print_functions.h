@@ -1,5 +1,14 @@
 #pragma once
 
-#include "main.h"
+#include "defines.h"
 
-void print_pair_vector(paired_vector vec);
+namespace project {
+    void print_pair_vector(const std::vector<factorization>& vec);
+    template <typename T>
+    void print_vector(const std::vector<T>& vec) {
+        for (auto i : vec) {
+            std::cout << i << ' ';
+        }
+        std::cout << '\n';
+    }
+}

@@ -1,9 +1,11 @@
 #pragma once
 
-#include "main.h"
+#include "defines.h"
 #include "math_functions.h"
 
 
-bool run_strong_pseudoprime_test(const main_type& number);
+namespace project {
+    bool run_strong_pseudoprime_test(const LongInt& number);
 
-bool strong_pseudoprime_test(const main_type& number, const main_type& prime_to_number);
+    bool strong_pseudoprime_test(const LongInt& number, const LongInt& prime_to_number);
+}

@@ -1,8 +1,10 @@
 #include "print_functions.h"
 
-void print_pair_vector(paired_vector vec) {
-    for (auto i : vec) {
-        std::cout << i.first << ' ' << i.second << '\n';
+namespace project {
+    void print_pair_vector(const std::vector<factorization>& vec) {
+        for (auto i : vec) {
+            std::cout << i.divisor << ' ' << i.degree << '\n';
+        }
+        std::cout << '\n';
     }
-    std::cout << '\n';
-}
+    }

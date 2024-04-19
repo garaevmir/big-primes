@@ -1,35 +1,37 @@
 #include "pollard-rho.h"
 
-paired_vector run_pollard_rho(main_type number) {
-    paired_vector factorization;
+namespace project {
+    std::vector<factorization> run_pollard_rho(LongInt number) {
+        std::vector<factorization> factorization;
 
-    while (number != 1) {
-        main_type answer = pollard_rho(number);
+        while (number != 1) {
+            LongInt answer = pollard_rho(number);
 
-        main_type deg = 0;
-        while (number % answer == 0) {
-            number /= answer;
-            ++deg;
+            SmallType deg = 0;
+            while (number % answer == 0) {
+                number /= answer;
+                ++deg;
+            }
+            factorization.push_back({answer, deg});
         }
-        factorization.push_back({ answer, deg });
+        return factorization;
     }
-    return factorization;
-}
 
-main_type function(main_type number, main_type mod) {
-    return (number * number + 1) % mod;
-}
-
-main_type pollard_rho(main_type number) {
-    main_type x = 2;
-    main_type y = x;
-    main_type d = 1;
-    while (d == 1) {
-        x = function(x, number);
-        y = function(function(y, number), number);
-        d = gcd(abs(x - y), number);
+    LongInt function(LongInt number, LongInt mod) {
+        return (number * number + 1) % mod;
     }
-    return d;
+
+    LongInt pollard_rho(LongInt number) {
+        LongInt x = 2;
+        LongInt y = x;
+        LongInt d = 1;
+        while (d == 1) {
+            x = function(x, number);
+            y = function(function(y, number), number);
+            d = gcd(abs(x - y), number);
+        }
+        return d;
+    }
 }
 
 //main_type new_pollard_rho(main_type number, small_type c, small_type limit) {

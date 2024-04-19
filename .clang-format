@@ -8,3 +8,5 @@ AllowShortLoopsOnASingleLine: false
 DerivePointerAlignment: true
 KeepEmptyLinesAtTheStartOfBlocks: true
 SortIncludes: false
+InsertNewlineAtEOF: true
+UseTab: Never
