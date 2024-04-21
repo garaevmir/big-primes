@@ -17,7 +17,7 @@ int main() {
     std::cout << "Write an integer number to examine it\n";
     std::cin >> num;
     std::cout << num << '\n';
-    if (project::run_strong_pseudoprime_test(num)) {
+    if (project::PseudoprimeTest::is_prime(num)) {
         std::cout << "Strong probable prime\n";
         if (project::LucasPrimalityTest::is_prime(num)) {
             std::cout << "Prime number\n";
@@ -30,8 +30,7 @@ int main() {
         std::string answer;
         std::cin >> answer;
         if (answer == "y") {
-            project::TrialDivision fact(num);
-            std::vector<project::factorization> factorization = fact.factorize();
+            std::vector<project::factorization> factorization = project::TrialDivision::factorize(num);
             std::cout << "Your factorization:\nPrime Degree\n";
             project::print_pair_vector(factorization);
         }

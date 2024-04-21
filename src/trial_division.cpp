@@ -5,50 +5,40 @@ namespace project {
         return sqrt(number) + 1;
     }
 
-    //bool TrialDivision::is_prime() {
-    //    if (number_to_factorize % 2 == 0 && number_to_factorize != 2) {
-    //        return false;
-    //    }
-    //    for (LongInt i = 3; i < border_for_divisor(number_to_factorize); i += 2) {
-    //        if (number_to_factorize % i == 0) {
-    //            return false;
-    //        }
-    // 
-    //    }
-    //    return true;
-    //}
-
-    LongInt TrialDivision::factor_one(LongInt& start) {
-        for (LongInt i = start + 2; i < border_for_divisor(number_to_factorize); i += 2) {
-            if (number_to_factorize % i == 0) {
+    LongInt TrialDivision::factor_one(const LongInt& number_to_factorise, LongInt& start) {
+        for (LongInt i = start + 2; i < border_for_divisor(number_to_factorise); i += 2) {
+            if (number_to_factorise % i == 0) {
                 return i;
             }
         }
-        return number_to_factorize;
+        return number_to_factorise;
     }
 
-    SmallType TrialDivision::find_degree(const LongInt& factor) {
+    SmallType TrialDivision::find_degree(LongInt& number_to_factorise, const LongInt& factor) {
         SmallType deg = 0;
-        while (number_to_factorize % factor == 0) {
-            number_to_factorize /= factor;
+        while (number_to_factorise % factor == 0) {
+            number_to_factorise /= factor;
             ++deg;
         }
         return deg;
     }
 
-    void TrialDivision::factor_out_2() {
-        if (number_to_factorize % 2 == 0) {
+    std::vector<factorization> TrialDivision::factor_out_2(LongInt& number_to_factorise) {
+        std::vector<factorization> factors;
+        if (number_to_factorise % 2 == 0) {
             LongInt temp = 2;
-            factors.push_back({2, find_degree(temp)});
+            factors.push_back({2, find_degree(number_to_factorise, temp)});
         }
+        return factors;
     }
 
-    std::vector<factorization> TrialDivision::factorize() {
+    std::vector<factorization> TrialDivision::factorize(const LongInt& number) {
+        LongInt number_to_factorise = number;
+        std::vector<factorization> factors = factor_out_2(number_to_factorise);
         LongInt last = 1;
-        factor_out_2();
-        while (number_to_factorize != 1) {
-            last = factor_one(last);
-            factors.push_back({last, find_degree(last)});
+        while (number_to_factorise != 1) {
+            last = factor_one(number_to_factorise, last);
+            factors.push_back({last, find_degree(number_to_factorise, last)});
         }
         return factors;
     }

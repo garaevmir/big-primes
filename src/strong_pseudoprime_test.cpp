@@ -1,7 +1,15 @@
 #include "strong_pseudoprime_test.h"
 
 namespace project {
-    bool run_strong_pseudoprime_test(const LongInt& number) {
+    LongInt PseudoprimeTest::factor_one(const LongInt& number_to_factorise, LongInt& start) {
+        for (LongInt i = start + 2; i < number_to_factorise; i += 2) {
+            if (number_to_factorise % i != 0) {
+                return i;
+            }
+        }
+        return number_to_factorise;
+    }
+    bool PseudoprimeTest::is_prime(const project::LongInt& number) {
         SmallType number_length = 0;
         LongInt temp = number;
         while (temp) {
@@ -11,13 +19,8 @@ namespace project {
         number_length *= number_length;
         temp = 1;
         while (number_length > 0) {
-            for (LongInt i = temp + 2; i < number; i += 2) {
-                if (number % i != 0) {
-                    temp = i;
-                    break;
-                }
-            }
-            if (!strong_pseudoprime_test(number, temp)) {
+            temp = factor_one(number, temp);
+            if (!run_test(number, temp)) {
                 return false;
             }
             --number_length;
@@ -25,7 +28,7 @@ namespace project {
         return true;
     }
 
-    bool strong_pseudoprime_test(const LongInt& number, const LongInt& prime_to_number) {
+    bool PseudoprimeTest::run_test(const LongInt& number, const LongInt& prime_to_number) {
         LongInt temp = number - 1;
         LongInt two_degree = 0;
         while (temp % 2 == 0) {

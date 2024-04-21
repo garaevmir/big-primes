@@ -8,7 +8,6 @@ namespace project {
 
     struct LucasPrimalityTest {
         public:
-            LucasPrimalityTest() = default;
             static bool is_prime(const LongInt& number_to_test);
         private:
             static LongInt computing_border(const LongInt& number_to_test);
