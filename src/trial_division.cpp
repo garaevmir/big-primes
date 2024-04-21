@@ -23,22 +23,26 @@ namespace project {
         return deg;
     }
 
-    std::vector<factorization> TrialDivision::factor_out_2(LongInt& number_to_factorise) {
-        std::vector<factorization> factors;
+    std::map<LongInt, SmallType> TrialDivision::factor_out_2(LongInt& number_to_factorise) {
+        std::map<LongInt, SmallType> factors;
         if (number_to_factorise % 2 == 0) {
             LongInt temp = 2;
-            factors.push_back({2, find_degree(number_to_factorise, temp)});
+            factors[2] += find_degree(number_to_factorise, temp);
         }
         return factors;
     }
 
-    std::vector<factorization> TrialDivision::factorize(const LongInt& number) {
+    std::map<LongInt, SmallType> TrialDivision::factorize(const LongInt& number) {
         LongInt number_to_factorise = number;
-        std::vector<factorization> factors = factor_out_2(number_to_factorise);
+        std::map<LongInt, SmallType> factors = factor_out_2(number_to_factorise);
         LongInt last = 1;
         while (number_to_factorise != 1) {
             last = factor_one(number_to_factorise, last);
-            factors.push_back({last, find_degree(number_to_factorise, last)});
+            factors[last] += find_degree(number_to_factorise, last);
+            if (PseudoprimeTest::is_prime(number_to_factorise)) {
+                factors[number_to_factorise] += 1;
+                break;
+            }
         }
         return factors;
     }

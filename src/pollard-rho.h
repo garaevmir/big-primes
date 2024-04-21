@@ -2,11 +2,14 @@
 
 #include "defines.h"
 #include "math_functions.h"
+#include "strong_pseudoprime_test.h"
+#include "trial_division.h"
 
 namespace project {
-    std::vector<factorization> run_pollard_rho(LongInt number);
-    LongInt function(LongInt number, LongInt mod);
-    LongInt pollard_rho(LongInt number);
+    struct PollardRho {
+        public:
+            static std::map<LongInt, SmallType> factorize(const LongInt& number);
+        private:
+            static LongInt factor_one(LongInt& number);
+    };
 }
-
-//main_type new_pollard_rho(main_type number, small_type c, small_type limit);

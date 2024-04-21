@@ -4,6 +4,9 @@
 #include "print_functions.h"
 #include "trial_division.h"
 #include "qs/quadratic_sieve.h"
+#include "pollard-rho.h"
+#include <boost/timer/timer.hpp>
+#include <chrono>
 
 int main() {
     project::LongInt num;
@@ -30,9 +33,16 @@ int main() {
         std::string answer;
         std::cin >> answer;
         if (answer == "y") {
-            std::vector<project::factorization> factorization = project::TrialDivision::factorize(num);
+            auto start = std::chrono::high_resolution_clock::now();
+            auto factors = project::PollardRho::factorize(num);
+//            auto factors = project::TrialDivision::factorize(num);
+            auto end = std::chrono::high_resolution_clock::now();
+            auto time_elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+            std::cout << "Time consumed: " << time_elapsed.count() << " ms" << std::endl;
             std::cout << "Your factorization:\nPrime Degree\n";
-            project::print_pair_vector(factorization);
+            for (const auto& i : factors) {
+                std::cout << i.first << ' ' << i.second << '\n';
+            }
         }
     }
 }
