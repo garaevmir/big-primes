@@ -5,8 +5,24 @@ namespace project {
         return sqrt(number) + 1;
     }
 
-    LongInt TrialDivision::factor_one(const LongInt& number_to_factorise, LongInt& start) {
-        for (LongInt i = start + 2; i < border_for_divisor(number_to_factorise); i += 2) {
+    LongInt TrialDivision::lower_bound(const LongInt& start) {
+        return  start + 1 + start % 2;
+    }
+
+    LongInt TrialDivision::factor_one(const LongInt& number_to_factorise) {
+        if (number_to_factorise % 2 == 0) {
+            return 2;
+        }
+        for (LongInt i = 3; i < border_for_divisor(number_to_factorise); i += 2) {
+            if (number_to_factorise % i == 0) {
+                return i;
+            }
+        }
+        return number_to_factorise;
+    }
+
+    LongInt TrialDivision::factor_one_bound(const LongInt& number_to_factorise, const LongInt& start) {
+        for (LongInt i = lower_bound(start); i < border_for_divisor(number_to_factorise); i += 2) {
             if (number_to_factorise % i == 0) {
                 return i;
             }
@@ -37,9 +53,9 @@ namespace project {
         std::map<LongInt, SmallType> factors = factor_out_2(number_to_factorise);
         LongInt last = 1;
         while (number_to_factorise != 1) {
-            last = factor_one(number_to_factorise, last);
+            last = factor_one_bound(number_to_factorise, last);
             factors[last] += find_degree(number_to_factorise, last);
-            if (PseudoprimeTest::is_prime(number_to_factorise)) {
+            if (number_to_factorise > 10000 && PseudoprimeTest::is_prime(number_to_factorise)) {
                 factors[number_to_factorise] += 1;
                 break;
             }

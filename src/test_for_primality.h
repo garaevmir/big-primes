@@ -5,7 +5,6 @@
 #include "math_functions.h"
 
 namespace project {
-
     struct LucasPrimalityTest {
         public:
             static bool is_prime(const LongInt& number_to_test);
@@ -16,5 +15,4 @@ namespace project {
             static bool testing(const LongInt& number_to_test, const LongInt& arg,
                          const std::map<LongInt, SmallType>& factorization);
     };
-
 }

@@ -1,0 +1,2 @@
+add_executable(speedtest tests.cpp test_miller_ryabin.cpp test_lucas_primality.cpp test_trial_division.cpp test_pollard_rho.cpp test_quadratic_sieve.cpp)
+target_link_libraries(speedtest big-primes-library)

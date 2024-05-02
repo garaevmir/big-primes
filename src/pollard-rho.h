@@ -9,7 +9,6 @@ namespace project {
     struct PollardRho {
         public:
             static std::map<LongInt, SmallType> factorize(const LongInt& number);
-        private:
-            static LongInt factor_one(LongInt& number);
+            static LongInt factor_one(const LongInt& number);
     };
 }

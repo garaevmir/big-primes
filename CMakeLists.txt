@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22)
 project(big-primes)
 
-find_package(Boost 1.85.0)
+find_package(Boost)
 
 include_directories(${Boost_INCLUDE_DIRS})
 
@@ -15,7 +15,7 @@ include_directories(
 )
 
 add_library(
-        big-primes
+        big-primes-library
         src/math_functions.cpp
         src/pollard-rho.cpp
         src/print_functions.cpp
@@ -23,12 +23,14 @@ add_library(
         src/test_for_primality.cpp
         src/trial_division.cpp
         src/qs/quadratic_sieve.cpp
-        src/qs/congruences.cpp
         src/qs/linear_algebra.cpp
 )
 
-target_link_libraries(big-primes Boost::boost)
+target_link_libraries(big-primes-library Boost::boost)
 
 add_executable(test src/main.cpp)
 
-target_link_libraries(test big-primes)
+target_link_libraries(test big-primes-library)
+
+add_subdirectory("tests")
+add_subdirectory("speedtest")

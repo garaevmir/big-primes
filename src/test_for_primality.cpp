@@ -7,7 +7,8 @@ namespace project {
     }
 
     bool LucasPrimalityTest::is_prime(const LongInt& number_to_test) {
-        std::map<LongInt, SmallType> factorization = TrialDivision::factorize(number_to_test - 1);
+        LongInt temp = number_to_test - 1;
+        std::map<LongInt, SmallType> factorization = TrialDivision::factorize(temp);
         LongInt border = min(number_to_test, computing_border(number_to_test));
         LongInt i = 2;
         if (testing(number_to_test, i, factorization)) {
