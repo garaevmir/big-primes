@@ -18,9 +18,6 @@ int main() {
 //    return 0;
 //    auto saa = abc.find_congruences(17);
 //    project::print_vector(saa);
-    project::LongInt n = 3, a = 10, m = 10;
-    std::cout << project::Maths::pow_mod(n, a, m);
-    return 0;
     std::cout << "Write an integer number to examine it\n";
     std::cin >> num;
     std::cout << num << '\n';

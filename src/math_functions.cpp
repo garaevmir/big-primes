@@ -1,20 +1,16 @@
 #include "math_functions.h"
 
 namespace project{
-    LongInt Maths::pow_mod(const LongInt& num, const LongInt& deg, const LongInt& module) {
-        LongInt num_deg = num;
-        LongInt norm = 1;
-        LongInt deg_temp = deg;
-        while (deg_temp > 1) {
-            if (deg_temp % 2) {
-                --deg_temp;
-                norm = (norm * num_deg) % module;
-            } else {
-                deg_temp >>= 1;
-                num_deg = (num_deg * num_deg) % module;
-            }
+    LongInt Maths::pow_mod(const LongInt& num, LongInt& deg, const LongInt& module) {
+        if (deg == 0) {
+            return 1;
         }
-        return (num_deg * norm) % module;
+        if (deg % 2 == 1) {
+            return (pow_mod(num, --deg, module) * num) % module;
+        }
+        deg /= 2;
+        LongInt ans = pow_mod(num, deg, module);
+        return (ans * ans) % module;
     }
 
     LongInt Maths::pow(const LongInt& num, const LongInt& deg) {
@@ -93,8 +89,10 @@ namespace project{
                 break;
             }
         }
-        c = pow_mod(c, q, mod);
-        LongInt t = pow_mod(number, q, mod);
+        LongInt qc = q;
+        c = pow_mod(c, qc, mod);
+        qc = q;
+        LongInt t = pow_mod(number, qc, mod);
         LongInt r = (q + 1) / 2;
         r = pow_mod(number, r, mod);
         while (t % mod != 1) {

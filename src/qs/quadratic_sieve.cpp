@@ -66,7 +66,7 @@ namespace project {
 
     LongInt QuadraticSieve::factor_one(const LongInt& number) {
         guessing_parametres();
-        auto factor_base = find_fa  ctor_base();
+        auto factor_base = find_factor_base();
         auto values_vector = sieving(factor_base);
         std::vector<SmallType> numbers_indexes;
         auto matrix = factor_suspects(values_vector, factor_base, numbers_indexes);
