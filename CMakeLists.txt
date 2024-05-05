@@ -26,11 +26,11 @@ add_library(
         src/qs/linear_algebra.cpp
 )
 
-target_link_libraries(big-primes-library Boost::boost)
-
-add_executable(test src/main.cpp)
-
-target_link_libraries(test big-primes-library)
+target_link_libraries(
+        big-primes-library
+        Boost::boost
+)
 
 add_subdirectory("tests")
 add_subdirectory("speedtest")
+add_subdirectory("example")

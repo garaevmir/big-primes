@@ -17,7 +17,7 @@ namespace TestQuadraticSieve {
         std::cout << "Speed test for one factor\n";
         std::vector<LongInt> numbers{705, 45023, 1097010613, 397166490301909, LongInt("10692119085417692189"),
                                      LongInt("1340739765032470240000933"),
-        LongInt("44740747869931444455739288444731585052051587564941")};
+                                     LongInt("44740747869931444455739288444731585052051587564941")};
         for (auto i : numbers) {
             project::SmallType digits = 0;
             project::LongInt temp = i;

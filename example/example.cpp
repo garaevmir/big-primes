@@ -1,4 +1,4 @@
-﻿#include "defines.h"
+#include "defines.h"
 #include "strong_pseudoprime_test.h"
 #include "test_for_primality.h"
 #include "trial_division.h"
@@ -38,7 +38,7 @@ int main() {
 //            auto factors = project::PollardRho::factorize(num);
             project::SmallType b = 2000;
             project::SmallType c = 100000;
-            project::QuadraticSieve abc(num, b, c);
+            project::QuadraticSieve abc(num);
             auto factors = abc.factor_one(num);
             project::LongInt a = 1;
 //            auto factors = project::TrialDivision::factor_one(num);

@@ -4,19 +4,10 @@
 namespace project {
 
     std::vector<std::vector<SmallType>> QuadraticSieve::gaussian_elimination(const std::vector<std::vector<SmallType>>& matrix) {
-//        std::cout << "elimination enter\n";
-//        for (auto i : matrix) {
-//            for (auto j : i) {
-//                std::cout << j << ' ';
-//            }
-//            std::cout << '\n';
-//        }
-//        std::cout << "\n*******************\n";
         std::vector<std::vector<SmallType>> matrix_mod = matrix;
         IndexType n = matrix_mod.size();
         assert(n > 0);
         IndexType m = matrix_mod[0].size();
-//        std::cout << n << ' ' << m << '\n';
         for (IndexType i = 0; i < n; ++i) {
             for (IndexType j = 0; j < m; ++j) {
                 matrix_mod[i][j] %= 2;
@@ -27,7 +18,6 @@ namespace project {
         for (IndexType i = 0; i < n; ++i) {
             used[i][i] = 1;
         }
-//        std::cout << "?/?\n";
         for (IndexType i = 0; i < m; ++i) {
             IndexType index = i - shift;
             if (index >= n) {
@@ -57,24 +47,7 @@ namespace project {
                 }
             }
         }
-//        std::cout << "-----------\n"
-        //for (auto i : matrix_mod) {
-        //    for (auto j : i) {
-        //        std::cout << j << ' ';
-        //    }
-        //    std::cout << '\n';
-        //}
-        //std::cout << "\n*******************\n";
-        //for (auto i : used) {
-        //    for (auto j : i) {
-        //        std::cout << j << ' ';
-        //    }
-        //    std::cout << '\n';
-        //}
-        //std::cout << "\n*******************\n";
-//        std::cout <<  std::min(n, m) - shift << '\n';
         std::vector<std::vector<SmallType>> use(used.begin() + std::min(std::min(n, m) - shift, IndexType(0)), used.end());
-//        std::cout << "elimination exit\n";
         return use;
     }
 };

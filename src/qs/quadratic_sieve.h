@@ -14,6 +14,7 @@ namespace project {
             public:
                 QuadraticSieve(const LongInt& number) {
                     number_to_factorise = number;
+                    guessing_parametres();
                 }
                 QuadraticSieve(const LongInt& number, const SmallType& factors_limit, const SmallType& border) {
                     number_to_factorise = number;
@@ -21,6 +22,8 @@ namespace project {
                     max_num = factors_limit * 100 + 1;
                     rad = border;
                 };
+                void update_number(const LongInt& number);
+                void update_number(const LongInt& number, const SmallType& factors_limit, const SmallType& border);
                 std::map<LongInt, SmallType> factorize(const LongInt& number);
                 LongInt factor_one(const LongInt& number);
             private:

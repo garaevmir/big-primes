@@ -13,20 +13,16 @@ namespace project{
         return (ans * ans) % module;
     }
 
-    LongInt Maths::pow(const LongInt& num, const LongInt& deg) {
-        LongInt num_deg = num;
-        LongInt norm = 1;
-        LongInt deg_temp = deg;
-        while (deg_temp > 1) {
-            if (deg_temp % 2) {
-                --deg_temp;
-                norm *= num_deg;
-            } else {
-                deg_temp >>= 1;
-                num_deg *= num_deg;
-            }
+    LongInt Maths::pow(const LongInt& num, LongInt& deg) {
+        if (deg == 0) {
+            return 1;
         }
-        return num_deg * norm;
+        if (deg % 2 == 1) {
+            return pow(num, --deg) * num;
+        }
+        deg /= 2;
+        LongInt ans = pow(num, deg);
+        return ans * ans;
     }
 
     LongInt Maths::gcd(const LongInt& a, const LongInt& b) {
@@ -69,6 +65,15 @@ namespace project{
             symbol *= factor_out_2(n_copy, p_copy);
         }
         return symbol;
+    }
+
+    LongInt Maths::multiply_factors(const std::map<LongInt, SmallType>& factors) {
+        LongInt number = 1;
+        for (const auto& i : factors) {
+            auto temp = project::LongInt(i.second);
+            number *= project::Maths::pow(i.first, temp);
+        }
+        return number;
     }
 
     LongInt Maths::find_congruence(const LongInt& number,const LongInt& mod) {
@@ -123,5 +128,4 @@ namespace project{
         LongInt congruence = find_congruence(number, p);
         return {congruence, p - congruence};
     }
-
     }

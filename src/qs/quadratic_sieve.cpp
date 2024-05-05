@@ -46,6 +46,17 @@ namespace project {
         }
     }
 
+    void QuadraticSieve::update_number(const LongInt& number) {
+        number_to_factorise = number;
+        guessing_parametres();
+    }
+    void QuadraticSieve::update_number(const LongInt& number, const SmallType& factors_limit, const SmallType& border) {
+        number_to_factorise = number;
+        factors_amount = factors_limit;
+        max_num = factors_amount * 100 + 1;
+        rad = border;
+    }
+
     std::map<LongInt, SmallType> QuadraticSieve::factorize(const LongInt& number) {
         std::map<LongInt, SmallType> factorization;
         while (number_to_factorise != 1) {
@@ -65,7 +76,7 @@ namespace project {
     }
 
     LongInt QuadraticSieve::factor_one(const LongInt& number) {
-        guessing_parametres();
+//        guessing_parametres();
         auto factor_base = find_factor_base();
         auto values_vector = sieving(factor_base);
         std::vector<SmallType> numbers_indexes;
@@ -90,12 +101,12 @@ namespace project {
                                         const std::vector<SmallType>& factor_base,
                                         const std::vector<SmallType>& numbers_indexes,
                                         const std::vector<LongInt>& values_vector) {
-        for (IndexType i = 0; i < used.size(); ++i) {
+        for (auto i : used) {
             LongInt x = 1;
             LongInt y = 1;
             std::vector<SmallType> row(factor_base.size(), 0);
-            for (IndexType j = 0; j < used[i].size(); ++j) {
-                if (used[i][j]) {
+            for (IndexType j = 0; j < i.size(); ++j) {
+                if (i[j]) {
                     process_candidates(matrix, numbers_indexes, values_vector, row, x, j);
                 }
             }
@@ -114,50 +125,37 @@ namespace project {
     std::vector<std::vector<SmallType>> QuadraticSieve::factor_suspects(const std::vector<LongInt>& values_vector,
                                                                         const std::vector<SmallType>& factor_base,
                                                                         std::vector<SmallType>& numbers_indexes) {
-//        std::cout << "suspects enter\n";
         std::vector<std::vector<SmallType>> matrix;
         for (IndexType i = 0; i < values_vector.size(); ++i) {
             std::vector<SmallType> row(factors_amount, 0);
             LongInt number = values_vector[i] * values_vector[i] - number_to_factorise;
-            // std::cout << "==================\n" << values_vector[i] << "\n---------------------\n";
             for (IndexType j = 0; j < factors_amount; ++j) {
                 SmallType temp = 0;
                 while (number % factor_base[j] == 0) {
                     ++temp;
                     number /= factor_base[j];
                 }
-                // if (temp) {
-                //     std::cout << factor_base[j - 1] << ' ' << temp << '\n';
-                // }
                 row[j] = temp;
                 if (number == 1) {
-//                    std::reverse(row.begin(), row.end());
                     matrix.push_back(row);
                     numbers_indexes.push_back(SmallType(i));
                     break;
                 }
             }
         }
-//        std::cout << "suspects exit\n";
         return matrix;
     }
 
     std::vector<LongInt> QuadraticSieve::sieving(const std::vector<SmallType>& factor_base) {
-//        std::cout << "sieving enter\n";
         LongInt numbers_root = boost::multiprecision::sqrt(number_to_factorise) + 1;
         std::vector<LongInt> sieve(2 * rad);
         for (IndexType i = 0; i < 2 * rad; ++i) {
             sieve[i] = (numbers_root + i) * (numbers_root + i) - number_to_factorise;
         }
-//        print_vector(sieve);
         for (SmallType i : factor_base) {
             std::vector<LongInt> congruences = Maths::find_congruences(number_to_factorise, i);
-//            std::cout << "-------" << i << '\n';
             for (const LongInt& j : congruences) {
-//                std::cout << j << '\n';
                 IndexType start = IndexType((j - numbers_root) % i + i) % i;
-//                std::cout
-                // IndexType start = IndexType((j - (numbers_root - rad) % i) + i);
                 for (auto l = IndexType(start); l < 2 * rad; l += IndexType(i)) {
                     while (sieve[l] % i == 0) {
                         sieve[l] /= i;
@@ -165,22 +163,16 @@ namespace project {
                 }
             }
         }
-//        print_vector(sieve);
-//        LongFloat num_log = log(LongFloat(number_to_factorise));
-//        LongFloat closenuf = (num_log / 2) + log(2 * rad) - special * log(factor_base.back());
         std::vector<LongInt> vec;
         for (IndexType i = 0; i < 2 * rad; ++i) {
             if (sieve[i] == 1) {
                 vec.emplace_back(numbers_root + i);
-                // std::cout << i << '\n';
             }
         }
-//        std::cout << "sieving exit\n";
         return vec;
     }
 
     std::vector<SmallType> QuadraticSieve::find_factor_base() {
-//        std::cout << "factor base enter\n";
         std::vector<SmallType> factor_base(factors_amount);
         factor_base[0] = 2;
         SmallType current_factors = 1;
@@ -195,8 +187,7 @@ namespace project {
                 }
             }
         }
-//        std::cout << "factor base exit\n";
         return factor_base;
     }
 
-}  // namespace project
+}
