@@ -31,6 +31,6 @@ target_link_libraries(
         Boost::boost
 )
 
-add_subdirectory("tests")
-add_subdirectory("speedtest")
+add_subdirectory("tests/functest")
+add_subdirectory("tests/speedtest")
 add_subdirectory("example")

@@ -7,7 +7,6 @@
 #include <boost/random/random_device.hpp>
 #include <boost/multiprecision/cpp_dec_float.hpp>
 #include "print_functions.h"
-#include "linear_algebra.h"
 
 namespace project {
 	struct QuadraticSieve {

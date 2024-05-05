@@ -47,7 +47,7 @@ namespace project {
                 }
             }
         }
-        std::vector<std::vector<SmallType>> use(used.begin() + std::min(std::min(n, m) - shift, IndexType(0)), used.end());
+        std::vector<std::vector<SmallType>> use(used.begin() + (std::min(n, m) > shift ? std::min(n, m) - shift : IndexType (0)), used.end());
         return use;
     }
-};
+}

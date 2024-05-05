@@ -17,14 +17,17 @@ enable_testing()
 
 add_executable(
         test
-        tests.cpp
         test_miller_ryabin.cpp
         test_lucas.cpp
-        test_trial_division.cpp test_pollard_rho.cpp test_quadratic_sieve.cpp)
-target_link_libraries(test
+        test_trial_division.cpp
+        test_pollard_rho.cpp
+        test_quadratic_sieve.cpp
+)
+target_link_libraries(
+        test
         big-primes-library
         GTest::gtest_main
-        )
+)
 
 include(GoogleTest)
 gtest_discover_tests(test)
