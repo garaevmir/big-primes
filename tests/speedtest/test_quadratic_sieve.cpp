@@ -57,4 +57,3 @@ namespace TestQuadraticSieve {
         std::cout << '\n';
     }
 }
-
