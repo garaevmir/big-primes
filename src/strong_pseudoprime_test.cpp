@@ -1,6 +1,6 @@
 #include "strong_pseudoprime_test.h"
 
-namespace project {
+namespace BigPrimes {
     LongInt PseudoprimeTest::factor_one(const LongInt& number_to_factorise, LongInt& start) {
         for (LongInt i = start + 2; i < number_to_factorise; i += 2) {
             if (number_to_factorise % i != 0) {
@@ -9,7 +9,7 @@ namespace project {
         }
         return number_to_factorise;
     }
-    bool PseudoprimeTest::is_prime(const project::LongInt& number) {
+    bool PseudoprimeTest::is_prime(const LongInt& number) {
         SmallType number_length = 0;
         LongInt temp = number;
         while (temp) {

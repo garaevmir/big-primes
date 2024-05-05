@@ -1,6 +1,6 @@
 #include "trial_division.h"
 
-namespace project {
+namespace BigPrimes {
     LongInt TrialDivision::border_for_divisor(const LongInt& number) {
         return sqrt(number) + 1;
     }

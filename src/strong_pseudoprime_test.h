@@ -4,7 +4,7 @@
 #include "math_functions.h"
 
 
-namespace project {
+namespace BigPrimes {
     struct PseudoprimeTest {
         public:
             static bool is_prime(const LongInt& number);

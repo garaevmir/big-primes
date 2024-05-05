@@ -1,6 +1,6 @@
 #include "test_lucas_primality.h"
 
-using namespace project;
+using namespace BigPrimes;
 
 namespace TestLucas {
     void test() {

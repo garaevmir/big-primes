@@ -1,7 +1,7 @@
 #include "quadratic_sieve.h"
 
 
-namespace project {
+namespace BigPrimes {
 
     std::vector<std::vector<SmallType>> QuadraticSieve::gaussian_elimination(const std::vector<std::vector<SmallType>>& matrix) {
         std::vector<std::vector<SmallType>> matrix_mod = matrix;

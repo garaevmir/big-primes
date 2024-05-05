@@ -3,7 +3,7 @@
 #include "defines.h"
 #include "strong_pseudoprime_test.h"
 
-namespace project {
+namespace BigPrimes {
     struct TrialDivision {
         public:
             static std::map<LongInt, SmallType> factorize(const LongInt& number);

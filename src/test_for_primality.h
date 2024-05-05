@@ -4,7 +4,7 @@
 #include "trial_division.h"
 #include "math_functions.h"
 
-namespace project {
+namespace BigPrimes {
     struct LucasPrimalityTest {
         public:
             static bool is_prime(const LongInt& number_to_test);

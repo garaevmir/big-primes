@@ -6,9 +6,8 @@
 #include <boost/random.hpp>
 #include <boost/random/random_device.hpp>
 #include <boost/multiprecision/cpp_dec_float.hpp>
-#include "print_functions.h"
 
-namespace project {
+namespace BigPrimes {
 	struct QuadraticSieve {
             public:
                 QuadraticSieve(const LongInt& number) {

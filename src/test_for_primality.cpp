@@ -1,6 +1,6 @@
 #include "test_for_primality.h"
 
-namespace project {
+namespace BigPrimes {
     LongInt LucasPrimalityTest::computing_border(const LongInt& number_to_test) {
         LongInt border = LongInt(log(LongFloat(number_to_test))) + 1;
         return border * border * border;

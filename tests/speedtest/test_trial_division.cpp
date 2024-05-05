@@ -1,6 +1,6 @@
 #include "test_trial_division.h"
 
-using namespace project;
+using namespace BigPrimes;
 
 namespace TestTrialDivision {
     void test() {

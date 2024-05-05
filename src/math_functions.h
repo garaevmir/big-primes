@@ -2,7 +2,7 @@
 
 #include "defines.h"
 
-namespace project {
+namespace BigPrimes {
     struct Maths {
         public:
             static LongInt pow_mod(const LongInt& num, LongInt& deg, const LongInt& module);

@@ -1,6 +1,6 @@
 #include "math_functions.h"
 
-namespace project{
+namespace BigPrimes{
     LongInt Maths::pow_mod(const LongInt& num, LongInt& deg, const LongInt& module) {
         if (deg == 0) {
             return 1;
@@ -70,8 +70,8 @@ namespace project{
     LongInt Maths::multiply_factors(const std::map<LongInt, SmallType>& factors) {
         LongInt number = 1;
         for (const auto& i : factors) {
-            auto temp = project::LongInt(i.second);
-            number *= project::Maths::pow(i.first, temp);
+            auto temp = LongInt(i.second);
+            number *= Maths::pow(i.first, temp);
         }
         return number;
     }

@@ -1,6 +1,6 @@
 #include "pollard-rho.h"
 
-namespace project {
+namespace BigPrimes {
     std::map<LongInt, SmallType> PollardRho::factorize(const LongInt &number) {
         std::map<LongInt, SmallType> factorization;
         LongInt number_to_factorise = number;

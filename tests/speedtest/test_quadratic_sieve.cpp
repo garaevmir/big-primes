@@ -1,6 +1,6 @@
 #include "test_quadratic_sieve.h"
 
-using namespace project;
+using namespace BigPrimes;
 
 namespace TestQuadraticSieve {
     void test() {
@@ -19,8 +19,8 @@ namespace TestQuadraticSieve {
                                      LongInt("1340739765032470240000933"),
                                      LongInt("44740747869931444455739288444731585052051587564941")};
         for (auto i : numbers) {
-            project::SmallType digits = 0;
-            project::LongInt temp = i;
+            BigPrimes::SmallType digits = 0;
+            BigPrimes::LongInt temp = i;
             while (temp > 0) {
                 ++digits;
                 temp /= 10;
@@ -41,8 +41,8 @@ namespace TestQuadraticSieve {
                                      LongInt("1340739765032470240000933"),
                                      LongInt("44740747869931444455739288444731585052051587564941")};
         for (auto i : numbers) {
-            project::SmallType digits = 0;
-            project::LongInt temp = i;
+            BigPrimes::SmallType digits = 0;
+            BigPrimes::LongInt temp = i;
             while (temp > 0) {
                 ++digits;
                 temp /= 10;

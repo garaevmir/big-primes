@@ -1,6 +1,6 @@
 #include "test_miller_ryabin.h"
 
-using namespace project;
+using namespace BigPrimes;
 
 namespace TestMillerRyabin {
     void test() {

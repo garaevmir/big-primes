@@ -1,6 +1,6 @@
 #include "test_pollard_rho.h"
 
-using namespace project;
+using namespace BigPrimes;
 
 namespace TestPollardRho {
     void test() {

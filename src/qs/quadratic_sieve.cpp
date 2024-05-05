@@ -1,9 +1,9 @@
 #include "quadratic_sieve.h"
 
-namespace project {
+namespace BigPrimes {
     void QuadraticSieve::guessing_parametres() {
-        project::SmallType digits = 0;
-        project::LongInt temp = number_to_factorise;
+        SmallType digits = 0;
+        LongInt temp = number_to_factorise;
         while (temp > 0) {
             ++digits;
             temp /= 10;

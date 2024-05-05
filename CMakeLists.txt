@@ -18,7 +18,6 @@ add_library(
         big-primes-library
         src/math_functions.cpp
         src/pollard-rho.cpp
-        src/print_functions.cpp
         src/strong_pseudoprime_test.cpp
         src/test_for_primality.cpp
         src/trial_division.cpp
