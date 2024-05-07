@@ -18,7 +18,7 @@ namespace BigPrimes {
                     number_to_factorise = number;
                     factors_amount = factors_limit;
                     max_num = factors_limit * 100 + 1;
-                    rad = border;
+                    sieve_size = border;
                 };
                 void update_number(const LongInt& number);
                 void update_number(const LongInt& number, const SmallType& factors_limit, const SmallType& border);
@@ -26,9 +26,9 @@ namespace BigPrimes {
                 LongInt factor_one(const LongInt& number);
             private:
                 LongInt number_to_factorise;
-                SmallType factors_amount = 100;
-                SmallType max_num = 10001;
-                SmallType rad = 5000;
+                SmallType factors_amount;
+                SmallType max_num;
+                SmallType sieve_size;
                 void guessing_parametres();
                 LongInt find_factor(const std::vector<std::vector<SmallType>>& matrix,
                                                     const std::vector<std::vector<SmallType>>& used,

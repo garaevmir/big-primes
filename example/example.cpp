@@ -23,8 +23,8 @@ int main() {
         std::string answer;
         std::cin >> answer;
         if (answer == "y") {
-            BigPrimes::QuadraticSieve abc(num);
-            auto factors = abc.factorize(num);
+            BigPrimes::QuadraticSieve qs(num);
+            auto factors = qs.factorize(num);
             std::cout << "Your factorization:\nPrime Degree\n";
             for (const auto& i : factors) {
                 std::cout << i.first << ' ' << i.second << '\n';

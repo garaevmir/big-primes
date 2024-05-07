@@ -1,28 +1,32 @@
 #include "math_functions.h"
 
 namespace BigPrimes{
-    LongInt Maths::pow_mod(const LongInt& num, LongInt& deg, const LongInt& module) {
-        if (deg == 0) {
-            return 1;
+    LongInt Maths::pow_mod(const LongInt& num, const LongInt& deg, const LongInt& module) {
+        LongInt number_in_degree = 1;
+        LongInt normaliser = num;
+        LongInt cur_deg = deg;
+        while (cur_deg != 0) {
+            if ((cur_deg & 1) != 0) {
+                number_in_degree = (number_in_degree * normaliser) % module;
+            }
+            normaliser = (normaliser * normaliser) % module;
+            cur_deg >>= 1;
         }
-        if (deg % 2 == 1) {
-            return (pow_mod(num, --deg, module) * num) % module;
-        }
-        deg /= 2;
-        LongInt ans = pow_mod(num, deg, module);
-        return (ans * ans) % module;
+        return number_in_degree;
     }
 
-    LongInt Maths::pow(const LongInt& num, LongInt& deg) {
-        if (deg == 0) {
-            return 1;
+    LongInt Maths::pow(const LongInt& num, const LongInt& deg) {
+        LongInt number_in_degree = 1;
+        LongInt normaliser = num;
+        LongInt cur_deg = deg;
+        while (cur_deg != 0) {
+            if ((cur_deg & 1) != 0) {
+                number_in_degree *= normaliser;
+            }
+            normaliser *= normaliser;
+            cur_deg >>= 1;
         }
-        if (deg % 2 == 1) {
-            return pow(num, --deg) * num;
-        }
-        deg /= 2;
-        LongInt ans = pow(num, deg);
-        return ans * ans;
+        return number_in_degree;
     }
 
     LongInt Maths::gcd(const LongInt& a, const LongInt& b) {
@@ -94,10 +98,8 @@ namespace BigPrimes{
                 break;
             }
         }
-        LongInt qc = q;
-        c = pow_mod(c, qc, mod);
-        qc = q;
-        LongInt t = pow_mod(number, qc, mod);
+        c = pow_mod(c, q, mod);
+        LongInt t = pow_mod(number, q, mod);
         LongInt r = (q + 1) / 2;
         r = pow_mod(number, r, mod);
         while (t % mod != 1) {
