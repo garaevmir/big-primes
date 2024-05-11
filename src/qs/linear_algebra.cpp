@@ -2,7 +2,6 @@
 
 
 namespace BigPrimes {
-
     std::vector<std::vector<SmallType>> QuadraticSieve::gaussian_elimination(const std::vector<std::vector<SmallType>>& matrix) {
         std::vector<std::vector<SmallType>> matrix_mod = matrix;
         IndexType n = matrix_mod.size();

@@ -13,7 +13,6 @@ namespace Test {
         EXPECT_EQ(true, BigPrimes::LucasPrimalityTest::is_prime(BigPrimes::LongInt("62301430410880998312047688564794632198076683384721")));
         EXPECT_EQ(true, BigPrimes::LucasPrimalityTest::is_prime(BigPrimes::LongInt("4299627456236271695097163499498705248885485007206706020942071089424297329292721947966917855975996661")));
     }
-
     TEST(LucasPrimalityTest, Composites) {
         EXPECT_EQ(false, BigPrimes::LucasPrimalityTest::is_prime(342));
         EXPECT_EQ(false, BigPrimes::LucasPrimalityTest::is_prime(90751));

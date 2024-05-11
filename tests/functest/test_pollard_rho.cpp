@@ -21,7 +21,6 @@ namespace Test {
         number = BigPrimes::LongInt("4587592344173103261443900376261941495420442936345693512940254899327042718929338589101567099577384933");
         EXPECT_EQ(0, number % BigPrimes::PollardRho::factor_one(number));
     }
-
     TEST(TestPollardRho, FactorizeTest) {
         BigPrimes::LongInt number = 705;
         auto factors = BigPrimes::PollardRho::factorize(number);

@@ -9,7 +9,6 @@ namespace TestLucas {
         test_composites();
         std::cout << "==================================\n";
     }
-
     void test_primes() {
         std::cout << "Speed test for prime numbers\n";
         std::vector<LongInt> numbers{179, 41077, 5941613819, 313372252932373, LongInt("48452878594687224547"),
@@ -23,7 +22,6 @@ namespace TestLucas {
         }
         std::cout << '\n';
     }
-
     void test_composites() {
         std::cout << "Speed test for composite numbers\n";
         std::vector<LongInt> numbers{342, 90751, 4339963843, 939312332008555, LongInt("75583811853085190253"),

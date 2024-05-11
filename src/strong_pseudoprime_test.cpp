@@ -27,7 +27,6 @@ namespace BigPrimes {
         }
         return true;
     }
-
     bool PseudoprimeTest::run_test(const LongInt& number, const LongInt& prime_to_number) {
         LongInt temp = number - 1;
         LongInt two_degree = 0;

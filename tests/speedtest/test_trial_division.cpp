@@ -9,7 +9,6 @@ namespace TestTrialDivision {
         test_factorization();
         std::cout << "==================================\n";
     }
-
     void test_factor_one() {
         std::cout << "Speed test for one factor\n";
         std::vector<LongInt> numbers{705, 45023, 1097010613, 397166490301909, LongInt("10692119085417692189"),
@@ -21,7 +20,6 @@ namespace TestTrialDivision {
         }
         std::cout << '\n';
     }
-
     void test_factorization() {
         std::cout << "Speed test for factorisation\n";
         std::vector<LongInt> numbers{705, 45023, 1097010613, 397166490301909, LongInt("10692119085417692189"),

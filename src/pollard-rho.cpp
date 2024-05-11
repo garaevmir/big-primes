@@ -19,7 +19,6 @@ namespace BigPrimes {
         }
         return factorization;
     }
-
     LongInt PollardRho::factor_one(const LongInt &number) {
         LongInt limit = 100000;
         LongInt c = 1;

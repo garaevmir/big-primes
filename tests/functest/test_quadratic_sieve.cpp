@@ -26,7 +26,6 @@ namespace Test {
         temp.update_number(number);
         EXPECT_EQ(0, number % temp.factor_one(number));
     }
-
     TEST(TestQuadraticSIeve, FactorizeTest) {
         BigPrimes::LongInt number = 705;
         BigPrimes::QuadraticSieve temp(number);

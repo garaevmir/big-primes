@@ -5,7 +5,6 @@ namespace BigPrimes {
         LongInt border = LongInt(log(LongFloat(number_to_test))) + 1;
         return border * border * border;
     }
-
     bool LucasPrimalityTest::is_prime(const LongInt& number_to_test) {
         LongInt temp = number_to_test - 1;
         std::map<LongInt, SmallType> factorization = TrialDivision::factorize(temp);
@@ -21,7 +20,6 @@ namespace BigPrimes {
         }
         return false;
     }
-
     bool LucasPrimalityTest::run_factors(const LongInt& number_to_test, LongInt& temp, const LongInt& arg,
                                          const std::map<LongInt, SmallType>& factors) {
         for (const auto& j : factors) {
@@ -32,7 +30,6 @@ namespace BigPrimes {
         }
         return true;
     }
-
     bool LucasPrimalityTest::testing(const LongInt& number_to_test, const LongInt& arg,
                                      const std::map<LongInt, SmallType>& factors) {
         LongInt temp = number_to_test - 1;

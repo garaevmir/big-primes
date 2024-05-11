@@ -8,8 +8,6 @@
 #include "test_quadratic_sieve.h"
 #include <chrono>
 
-//void primality_test_time_measure(const primality_function& function, const BigPrimes::LongInt& number);
-
 template <typename T>
 void time_measure(const T& function, const BigPrimes::LongInt& number) {
     BigPrimes::SmallType digits = 0;

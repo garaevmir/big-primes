@@ -19,7 +19,6 @@ namespace Test {
         number = BigPrimes::LongInt("57388947496693346193146341306536502913894044311157");
         EXPECT_EQ(0, number % BigPrimes::TrialDivision::factor_one(number));
     }
-
     TEST(TestTrialDivision, FactorizeTest) {
         BigPrimes::LongInt number = 705;
         auto factors = BigPrimes::TrialDivision::factorize(number);

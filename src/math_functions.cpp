@@ -14,7 +14,6 @@ namespace BigPrimes{
         }
         return number_in_degree;
     }
-
     LongInt Maths::pow(const LongInt& num, const LongInt& deg) {
         LongInt number_in_degree = 1;
         LongInt normaliser = num;
@@ -28,7 +27,6 @@ namespace BigPrimes{
         }
         return number_in_degree;
     }
-
     LongInt Maths::gcd(const LongInt& a, const LongInt& b) {
         LongInt a_copy = a;
         LongInt b_copy = b;
@@ -38,7 +36,6 @@ namespace BigPrimes{
         }
         return a_copy;
     }
-
     SmallType Maths::factor_out_2(LongInt& n, LongInt& p) {
         int64_t temp = 0;
         while (n % 2 == 0) {
@@ -50,7 +47,6 @@ namespace BigPrimes{
         }
         return 1;
     }
-
     SmallType Maths::find_legendre(const LongInt& n, const LongInt& p) {
         LongInt n_copy = n;
         LongInt p_copy = p;
@@ -70,7 +66,6 @@ namespace BigPrimes{
         }
         return symbol;
     }
-
     LongInt Maths::multiply_factors(const std::map<LongInt, SmallType>& factors) {
         LongInt number = 1;
         for (const auto& i : factors) {
@@ -79,7 +74,6 @@ namespace BigPrimes{
         }
         return number;
     }
-
     LongInt Maths::find_congruence(const LongInt& number,const LongInt& mod) {
         LongInt s = 0;
         LongInt q = mod - 1;
@@ -122,7 +116,6 @@ namespace BigPrimes{
         }
         return r;
     }
-
     std::vector<LongInt> Maths::find_congruences(const LongInt& number, const LongInt& p) {
         if (p == 2) {
             return {(number % p)};

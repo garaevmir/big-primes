@@ -1,7 +1,6 @@
 #include "quadratic_sieve.h"
 
 namespace BigPrimes {
-
     void QuadraticSieve::guessing_parametres() {
         SmallType digits = 0;
         LongInt temp = number_to_factorise;
@@ -46,19 +45,16 @@ namespace BigPrimes {
             return;
         }
     }
-
     void QuadraticSieve::update_number(const LongInt& number) {
         number_to_factorise = number;
         guessing_parametres();
     }
-
     void QuadraticSieve::update_number(const LongInt& number, const SmallType& factors_limit, const SmallType& border) {
         number_to_factorise = number;
         factors_amount = factors_limit;
         max_num = factors_amount * 100 + 1;
         sieve_size = border;
     }
-
     std::map<LongInt, SmallType> QuadraticSieve::factorize(const LongInt& number) {
         std::map<LongInt, SmallType> factorization;
         while (number_to_factorise != 1) {
@@ -76,7 +72,6 @@ namespace BigPrimes {
         }
         return factorization;
     }
-
     LongInt QuadraticSieve::factor_one(const LongInt& number) {
         auto factor_base = find_factor_base();
         auto values_vector = sieving(factor_base);
@@ -86,7 +81,6 @@ namespace BigPrimes {
         LongInt factor = find_factor(matrix, used, factor_base, numbers_indexes, values_vector);
         return factor;
     }
-
     void QuadraticSieve::process_candidates(const std::vector<std::vector<SmallType>>& matrix,
                                             const std::vector<SmallType>& numbers_indexes,
                                             const std::vector<LongInt>& values_vector,
@@ -96,7 +90,6 @@ namespace BigPrimes {
             row[l] += matrix[j][l];
         }
     }
-
     LongInt QuadraticSieve::find_factor(const std::vector<std::vector<SmallType>>& matrix,
                                         const std::vector<std::vector<SmallType>>& used,
                                         const std::vector<SmallType>& factor_base,
@@ -122,7 +115,6 @@ namespace BigPrimes {
         }
         return number_to_factorise;
     }
-
     std::vector<std::vector<SmallType>> QuadraticSieve::factor_suspects(const std::vector<LongInt>& values_vector,
                                                                         const std::vector<SmallType>& factor_base,
                                                                         std::vector<SmallType>& numbers_indexes) {
@@ -146,7 +138,6 @@ namespace BigPrimes {
         }
         return matrix;
     }
-
     std::vector<LongInt> QuadraticSieve::sieving(const std::vector<SmallType>& factor_base) {
         LongInt numbers_root = boost::multiprecision::sqrt(number_to_factorise) + 1;
         std::vector<LongInt> sieve(2 * sieve_size);
@@ -172,7 +163,6 @@ namespace BigPrimes {
         }
         return vec;
     }
-
     std::vector<SmallType> QuadraticSieve::find_factor_base() {
         std::vector<SmallType> factor_base(factors_amount);
         factor_base[0] = 2;

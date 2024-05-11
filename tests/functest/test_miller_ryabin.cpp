@@ -13,7 +13,6 @@ namespace Test {
         EXPECT_EQ(true, BigPrimes::PseudoprimeTest::is_prime(BigPrimes::LongInt("74997382925113036024802760153259410990097509328129")));
         EXPECT_EQ(true, BigPrimes::PseudoprimeTest::is_prime(BigPrimes::LongInt("4299627456236271695097163499498705248885485007206706020942071089424297329292721947966917855975996661")));
     }
-
     TEST(StrongPseudoprimeTest, Composites) {
         EXPECT_EQ(false, BigPrimes::PseudoprimeTest::is_prime(342));
         EXPECT_EQ(false, BigPrimes::PseudoprimeTest::is_prime(90751));
