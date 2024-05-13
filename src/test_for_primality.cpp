@@ -2,6 +2,10 @@
 
 namespace BigPrimes {
     bool LucasPrimalityTest::is_prime(const LongInt& number_to_test) {
+        // Test works badly with those numbers
+        if (number_to_test == 1 || number_to_test == 2 || number_to_test == 3) {
+            return true;
+        }
         LongInt temp = number_to_test - 1;
         std::map<LongInt, SmallType> factorization = TrialDivision::factorize(temp);
         LongInt border = min(number_to_test, computing_border(number_to_test));

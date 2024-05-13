@@ -2,6 +2,10 @@
 
 namespace BigPrimes {
     bool PseudoprimeTest::is_prime(const LongInt& number) {
+        // Test works badly with those numbers
+        if (number == 1 || number == 2 || number == 3) {
+            return true;
+        }
         SmallType number_length = 0;
         LongInt temp = number;
         while (temp) {
