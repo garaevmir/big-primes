@@ -10,3 +10,4 @@ KeepEmptyLinesAtTheStartOfBlocks: true
 SortIncludes: CaseSensitive
 InsertNewlineAtEOF: true
 UseTab: Never
+SeparateDefinitionBlocks: Always

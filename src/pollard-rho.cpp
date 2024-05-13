@@ -1,6 +1,7 @@
 #include "pollard-rho.h"
 
 namespace BigPrimes {
+    const LongInt PollardRho::limit = 100000;
     std::map<LongInt, SmallType> PollardRho::factorize(const LongInt &number) {
         std::map<LongInt, SmallType> factorization;
         LongInt number_to_factorise = number;
@@ -19,8 +20,8 @@ namespace BigPrimes {
         }
         return factorization;
     }
+
     LongInt PollardRho::factor_one(const LongInt &number) {
-        LongInt limit = 100000;
         LongInt c = 1;
         LongInt x = 2;
         LongInt y = x * x + c;

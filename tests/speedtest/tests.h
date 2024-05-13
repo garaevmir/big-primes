@@ -7,16 +7,12 @@
 #include "test_pollard_rho.h"
 #include "test_quadratic_sieve.h"
 #include <chrono>
+#include "math_functions.h"
 
 template <typename T>
 void time_measure(const T& function, const BigPrimes::LongInt& number) {
-    BigPrimes::SmallType digits = 0;
-    BigPrimes::LongInt temp = number;
+    BigPrimes::SmallType digits = BigPrimes::Maths::number_of_digits(number);
     auto func = function;
-    while (temp > 0) {
-        ++digits;
-        temp /= 10;
-    }
     auto start = std::chrono::high_resolution_clock::now();
     auto output = func(number);
     auto end = std::chrono::high_resolution_clock::now();

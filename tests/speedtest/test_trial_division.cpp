@@ -1,8 +1,9 @@
 #include "test_trial_division.h"
 
-using namespace BigPrimes;
-
 namespace TestTrialDivision {
+
+    using namespace BigPrimes;
+
     void test() {
         std::cout << "Testing Trial Division\n----------------------------------\n";
         test_factor_one();

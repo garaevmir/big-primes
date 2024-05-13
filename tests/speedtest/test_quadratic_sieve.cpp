@@ -1,8 +1,9 @@
 #include "test_quadratic_sieve.h"
 
-using namespace BigPrimes;
-
 namespace TestQuadraticSieve {
+
+    using namespace BigPrimes;
+
     void test() {
         std::cout << "Testing Quadratic Sieve\n----------------------------------\n";
         test_factor_one();

@@ -2,21 +2,25 @@
 
 
 namespace BigPrimes {
-    std::vector<std::vector<SmallType>> QuadraticSieve::gaussian_elimination(const std::vector<std::vector<SmallType>>& matrix) {
-        std::vector<std::vector<SmallType>> matrix_mod = matrix;
-        IndexType n = matrix_mod.size();
-        assert(n > 0);
-        IndexType m = matrix_mod[0].size();
+    std::vector<std::vector<SmallType>> QuadraticSieve::make_mod_2(std::vector<std::vector<SmallType>> matrix, const LongInt& n, const LongInt& m) const {
         for (IndexType i = 0; i < n; ++i) {
             for (IndexType j = 0; j < m; ++j) {
-                matrix_mod[i][j] %= 2;
+                matrix[i][j] %= 2;
             }
         }
-        IndexType shift = 0;
+        return matrix;
+    }
+
+    std::vector<std::vector<SmallType>> QuadraticSieve::gaussian_elimination(const std::vector<std::vector<SmallType>>& matrix) const {
+        IndexType n = matrix.size();
+        assert(n > 0);
+        IndexType m = matrix[0].size();
+        std::vector<std::vector<SmallType>> matrix_mod = make_mod_2(matrix, n, m);
         std::vector<std::vector<SmallType>> used(n, std::vector<SmallType>(n, 0));
         for (IndexType i = 0; i < n; ++i) {
             used[i][i] = 1;
         }
+        IndexType shift = 0;
         for (IndexType i = 0; i < m; ++i) {
             IndexType index = i - shift;
             if (index >= n) {

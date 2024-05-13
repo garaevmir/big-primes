@@ -1,8 +1,9 @@
 #include "test_pollard_rho.h"
 
-using namespace BigPrimes;
-
 namespace TestPollardRho {
+
+    using namespace BigPrimes;
+
     void test() {
         std::cout << "Testing Pollard Rho\n----------------------------------\n";
         test_factor_one();

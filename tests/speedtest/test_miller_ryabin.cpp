@@ -1,8 +1,9 @@
 #include "test_miller_ryabin.h"
 
-using namespace BigPrimes;
-
 namespace TestMillerRyabin {
+
+    using namespace BigPrimes;
+
     void test() {
         std::cout << "Testing Miller-Ryabin test\n----------------------------------\n";
         test_primes();

@@ -1,8 +1,9 @@
 #include "test_lucas_primality.h"
 
-using namespace BigPrimes;
-
 namespace TestLucas {
+
+    using namespace BigPrimes;
+
     void test() {
         std::cout << "Testing Lucas primality test\n----------------------------------\n";
         test_primes();

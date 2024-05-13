@@ -1,14 +1,6 @@
 #include "strong_pseudoprime_test.h"
 
 namespace BigPrimes {
-    LongInt PseudoprimeTest::factor_one(const LongInt& number_to_factorise, LongInt& start) {
-        for (LongInt i = start + 2; i < number_to_factorise; i += 2) {
-            if (number_to_factorise % i != 0) {
-                return i;
-            }
-        }
-        return number_to_factorise;
-    }
     bool PseudoprimeTest::is_prime(const LongInt& number) {
         SmallType number_length = 0;
         LongInt temp = number;
@@ -20,14 +12,24 @@ namespace BigPrimes {
         temp = 1;
         while (number_length > 0) {
             temp = factor_one(number, temp);
-            if (!run_test(number, temp)) {
+            if (!is_witness(number, temp)) {
                 return false;
             }
             --number_length;
         }
         return true;
     }
-    bool PseudoprimeTest::run_test(const LongInt& number, const LongInt& prime_to_number) {
+
+    LongInt PseudoprimeTest::factor_one(const LongInt& number_to_factorise, LongInt& start) {
+        for (LongInt i = start + 2; i < number_to_factorise; i += 2) {
+            if (number_to_factorise % i != 0) {
+                return i;
+            }
+        }
+        return number_to_factorise;
+    }
+
+    bool PseudoprimeTest::is_witness(const LongInt& number, const LongInt& prime_to_number) {
         LongInt temp = number - 1;
         LongInt two_degree = 0;
         while (temp % 2 == 0) {

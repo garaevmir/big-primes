@@ -2,6 +2,7 @@
 
 #include "defines.h"
 #include "strong_pseudoprime_test.h"
+#include <map>
 
 namespace BigPrimes {
     struct TrialDivision {
