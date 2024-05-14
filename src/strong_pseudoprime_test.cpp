@@ -6,14 +6,9 @@ namespace BigPrimes {
         if (number == 1 || number == 2 || number == 3) {
             return true;
         }
-        SmallType number_length = 0;
-        LongInt temp = number;
-        while (temp) {
-            temp /= 10;
-            ++number_length;
-        }
+        SmallType number_length = Maths::number_of_digits(number);
+        LongInt temp = 1;
         number_length *= number_length;
-        temp = 1;
         while (number_length > 0) {
             temp = factor_one(number, temp);
             if (!is_witness(number, temp)) {
